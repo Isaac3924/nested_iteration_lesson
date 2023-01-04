@@ -10,7 +10,15 @@ cities_lived_in = {
 # Get a unique list of all of the cities that these humans have lived in  
 # ["Philadelphia", "Fort Collins", "Seattle", "Denver", "Santa Fe", "Portland", "Lansing", "Columbus", "Austin"]
 
+unique_cities = []
 
+cities_lived_in.each do |person, cities|
+    cities.each do |city|
+        unique_cities << city if !unique_cities.include?(city)
+    end
+end
+
+p unique_cities
 
 
 # Problem #2: 
@@ -21,7 +29,12 @@ cities_lived_in = {
 # or
 # ["Michaela", "Mike", "Salvador"]
 
+lived_in_philly = []
+cities_lived_in.each do |person, cities|
+    lived_in_philly << person if cities.include?("Philadelphia")
+end
 
+p lived_in_philly
 
 
 # Problem #3: 
@@ -38,3 +51,26 @@ cities_lived_in = {
 #     "Columbus => 1,
 #     "Austin" => 1
 # }
+
+
+# cities_hash = {}
+
+# cities_lived_in.each do |person, cities|
+#     cities.each do |city|
+#         if cities_hash(city).nil? 
+#             cities_hash[city] = 0 
+#         else
+#             cities_hash[city] = 0 if !cities_hash(city).nil?
+#         end
+#     end
+# end
+
+cities_hash = Hash.new{0}
+
+cities_lived_in.each do |person, cities|
+    cities.each do |city|
+        cities_hash[city] +=1 
+    end
+end
+
+p cities_hash

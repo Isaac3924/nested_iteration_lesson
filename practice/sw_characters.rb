@@ -216,6 +216,17 @@ characters = [
 
 # ["Tatooine", "Naboo", "Alderaan" ... ]
 
+homeworlds = []
+
+characters.each do |character|
+    character.each do |key, value|
+        if key == :homeworld
+            homeworlds << value if !homeworlds.include?(value)
+        end
+    end
+end
+
+p homeworlds
 
 # Challenge #2
 
